@@ -1,0 +1,393 @@
+====================================================
+Outcome: report_score
+====================================================
+Model 1: total scaffold effect
+
+Linear regression model (robust fit):
+    report_score ~ 1 + pretest_score + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate      SE        tStat       pValue  
+                                                                ________    _______    _______    __________
+
+    (Intercept)                                                   62.075     5.8702     10.575    1.2594e-18
+    pretest_score                                               -0.72812    0.51599    -1.4111       0.16093
+    engineering_scaffold_Yes                                      14.644     3.2217     4.5454    1.3734e-05
+    process_assessment_scaffold_Yes                               9.0317     3.2196     2.8052     0.0059136
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes     -5.6941      4.779    -1.1915       0.23594
+
+
+Number of observations: 119, Error degrees of freedom: 114
+Root Mean Squared Error: 12.9
+R-squared: 0.232,  Adjusted R-Squared: 0.205
+F-statistic vs. constant model: 8.62, p-value = 4.09e-06
+Model 2: trace-adjusted model
+
+Linear regression model (robust fit):
+    report_score ~ [Linear formula with 9 terms in 7 predictors]
+
+Estimated Coefficients:
+                                                                Estimate       SE        tStat       pValue  
+                                                                ________    ________    _______    __________
+
+    (Intercept)                                                   52.286      11.806     4.4287     2.247e-05
+    pretest_score                                               -0.57449     0.52072    -1.1032       0.27233
+    effective_modelling_time                                    0.021605    0.029868    0.72335         0.471
+    first_practice_score                                         0.04786     0.11119    0.43042       0.66773
+    practice_gain_ratio                                            7.818      6.8901     1.1347       0.25897
+    model_revision_rounds                                         0.3361     0.21141     1.5898       0.11474
+    engineering_scaffold_Yes                                      15.966      3.2749     4.8752    3.6839e-06
+    process_assessment_scaffold_Yes                               10.534      3.3078     3.1844     0.0018869
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes     -9.2901      5.1608    -1.8001      0.074579
+
+
+Number of observations: 119, Error degrees of freedom: 110
+Root Mean Squared Error: 12.7
+R-squared: 0.265,  Adjusted R-Squared: 0.211
+F-statistic vs. constant model: 4.95, p-value = 3.02e-05
+Model 3: learning-mode model
+
+Linear regression model (robust fit):
+    report_score ~ 1 + pretest_score + learning_mode_final + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate      SE        tStat        pValue  
+                                                                ________    _______    ________    __________
+
+    (Intercept)                                                   59.587     6.3842      9.3335    1.2263e-15
+    pretest_score                                               -0.60314    0.52291     -1.1534       0.25121
+    learning_mode_final_High-start plateau learners             -0.46328      2.935    -0.15785       0.87487
+    learning_mode_final_High-investment model optimizers           6.186     4.0948      1.5107        0.1337
+    learning_mode_final_Minimal-time efficient completers         1.8093     4.5482     0.39781       0.69153
+    engineering_scaffold_Yes                                       15.75      3.275       4.809    4.8034e-06
+    process_assessment_scaffold_Yes                               10.069     3.2694      3.0797      0.002612
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes     -8.9723     5.0884     -1.7633      0.080603
+
+
+Number of observations: 119, Error degrees of freedom: 111
+Root Mean Squared Error: 12.8
+R-squared: 0.251,  Adjusted R-Squared: 0.204
+F-statistic vs. constant model: 5.32, p-value = 2.85e-05
+Model 4: decision-behaviour model
+
+Linear regression model (robust fit):
+    report_score ~ 1 + pretest_score + reported_model + selected_highest_R2_model + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate      SE        tStat       pValue  
+                                                                ________    _______    _______    __________
+
+    (Intercept)                                                    63.25     6.3749     9.9218    4.9885e-17
+    pretest_score                                               -0.62113    0.49817    -1.2468       0.21507
+    reported_model_J                                              4.5294     2.4858     1.8221      0.071109
+    selected_highest_R2_model_Y                                  -5.3568     2.7941    -1.9172       0.05776
+    engineering_scaffold_Yes                                       13.31     3.1359     4.2442    4.5424e-05
+    process_assessment_scaffold_Yes                               7.3418     3.1562     2.3262      0.021808
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes     -4.9046     4.6145    -1.0629       0.29013
+
+
+Number of observations: 119, Error degrees of freedom: 112
+Root Mean Squared Error: 12.4
+R-squared: 0.279,  Adjusted R-Squared: 0.24
+F-statistic vs. constant model: 7.22, p-value = 1.56e-06
+
+
+====================================================
+Outcome: engineering_test_score
+====================================================
+Model 1: total scaffold effect
+
+Linear regression model (robust fit):
+    engineering_test_score ~ 1 + pretest_score + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate      SE        tStat        pValue  
+                                                                ________    _______    ________    __________
+
+    (Intercept)                                                   84.663     4.6104      18.364    7.5493e-36
+    pretest_score                                               -0.38451    0.40525    -0.94882       0.34472
+    engineering_scaffold_Yes                                       4.382     2.5303      1.7318       0.08601
+    process_assessment_scaffold_Yes                               2.9727     2.5286      1.1756       0.24219
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes     0.58439     3.7533      0.1557       0.87654
+
+
+Number of observations: 119, Error degrees of freedom: 114
+Root Mean Squared Error: 10.1
+R-squared: 0.0766,  Adjusted R-Squared: 0.0442
+F-statistic vs. constant model: 2.36, p-value = 0.0572
+Model 2: trace-adjusted model
+
+Linear regression model (robust fit):
+    engineering_test_score ~ [Linear formula with 9 terms in 7 predictors]
+
+Estimated Coefficients:
+                                                                Estimate       SE        tStat        pValue  
+                                                                ________    ________    ________    __________
+
+    (Intercept)                                                   47.665      8.3044      5.7397    8.4968e-08
+    pretest_score                                               0.081612     0.36628     0.22282       0.82409
+    effective_modelling_time                                    0.048386    0.021009      2.3031      0.023154
+    first_practice_score                                         0.31963    0.078213      4.0866    8.3465e-05
+    practice_gain_ratio                                           13.499      4.8465      2.7853     0.0062995
+    model_revision_rounds                                        0.31874      0.1487      2.1434      0.034282
+    engineering_scaffold_Yes                                      6.5496      2.3036      2.8432     0.0053254
+    process_assessment_scaffold_Yes                               6.3703      2.3267      2.7379     0.0072134
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes    -0.64923      3.6301    -0.17885       0.85839
+
+
+Number of observations: 119, Error degrees of freedom: 110
+Root Mean Squared Error: 8.9
+R-squared: 0.276,  Adjusted R-Squared: 0.223
+F-statistic vs. constant model: 5.24, p-value = 1.45e-05
+Model 3: learning-mode model
+
+Linear regression model (robust fit):
+    engineering_test_score ~ 1 + pretest_score + learning_mode_final + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate      SE        tStat        pValue  
+                                                                ________    _______    ________    __________
+
+    (Intercept)                                                   81.684     5.0207      16.269    3.6709e-31
+    pretest_score                                               -0.21166    0.41123     -0.5147       0.60778
+    learning_mode_final_High-start plateau learners             -0.39782     2.3082    -0.17235       0.86348
+    learning_mode_final_High-investment model optimizers          6.3495     3.2203      1.9717      0.051128
+    learning_mode_final_Minimal-time efficient completers        0.12013     3.5768    0.033587       0.97327
+    engineering_scaffold_Yes                                      5.6553     2.5756      2.1957      0.030193
+    process_assessment_scaffold_Yes                               4.1887     2.5712      1.6291       0.10613
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes     -2.8311     4.0017    -0.70747       0.48076
+
+
+Number of observations: 119, Error degrees of freedom: 111
+Root Mean Squared Error: 10.1
+R-squared: 0.114,  Adjusted R-Squared: 0.0578
+F-statistic vs. constant model: 2.03, p-value = 0.0569
+Model 4: decision-behaviour model
+
+Linear regression model (robust fit):
+    engineering_test_score ~ 1 + pretest_score + reported_model + selected_highest_R2_model + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate      SE        tStat        pValue  
+                                                                ________    _______    ________    __________
+
+    (Intercept)                                                   83.581     5.0332      16.606    5.5717e-32
+    pretest_score                                               -0.31605    0.39333    -0.80353       0.42337
+    reported_model_J                                              4.5361     1.9627      2.3112       0.02265
+    selected_highest_R2_model_Y                                  -2.9504      2.206     -1.3374       0.18379
+    engineering_scaffold_Yes                                      3.5152     2.4759      1.4198       0.15845
+    process_assessment_scaffold_Yes                               2.4506     2.4919      0.9834       0.32753
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes     0.87962     3.6433     0.24143       0.80966
+
+
+Number of observations: 119, Error degrees of freedom: 112
+Root Mean Squared Error: 9.8
+R-squared: 0.14,  Adjusted R-Squared: 0.094
+F-statistic vs. constant model: 3.04, p-value = 0.00858
+
+
+====================================================
+Outcome: model_evaluation
+====================================================
+Model 1: total scaffold effect
+
+Linear regression model (robust fit):
+    model_evaluation ~ 1 + pretest_score + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate      SE        tStat        pValue  
+                                                                ________    _______    ________    __________
+
+    (Intercept)                                                   11.935     1.6955      7.0391    1.5461e-10
+    pretest_score                                               -0.13503    0.14903    -0.90607       0.36681
+    engineering_scaffold_Yes                                      2.9378    0.93051      3.1572     0.0020387
+    process_assessment_scaffold_Yes                               2.6868     0.9299      2.8893     0.0046223
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes      -1.578     1.3803     -1.1432       0.25535
+
+
+Number of observations: 119, Error degrees of freedom: 114
+Root Mean Squared Error: 3.72
+R-squared: 0.146,  Adjusted R-Squared: 0.116
+F-statistic vs. constant model: 4.88, p-value = 0.00114
+Model 2: trace-adjusted model
+
+Linear regression model (robust fit):
+    model_evaluation ~ [Linear formula with 9 terms in 7 predictors]
+
+Estimated Coefficients:
+                                                                 Estimate        SE         tStat       pValue  
+                                                                __________    _________    ________    _________
+
+    (Intercept)                                                     10.607       3.5525      2.9857    0.0034881
+    pretest_score                                                 -0.12367      0.15669    -0.78928      0.43165
+    effective_modelling_time                                    0.00044736    0.0089875    0.049776      0.96039
+    first_practice_score                                          0.010841     0.033459     0.32401      0.74655
+    practice_gain_ratio                                             1.2735       2.0733     0.61424      0.54032
+    model_revision_rounds                                          0.03267     0.063614     0.51356      0.60859
+    engineering_scaffold_Yes                                        3.0353      0.98545      3.0801    0.0026137
+    process_assessment_scaffold_Yes                                 2.8188      0.99535       2.832    0.0055025
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes       -1.8718       1.5529     -1.2054      0.23065
+
+
+Number of observations: 119, Error degrees of freedom: 110
+Root Mean Squared Error: 3.81
+R-squared: 0.146,  Adjusted R-Squared: 0.084
+F-statistic vs. constant model: 2.35, p-value = 0.0225
+Model 3: learning-mode model
+
+Linear regression model (robust fit):
+    model_evaluation ~ 1 + pretest_score + learning_mode_final + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate      SE        tStat        pValue  
+                                                                ________    _______    ________    __________
+
+    (Intercept)                                                   11.957     1.8743      6.3793    4.2217e-09
+    pretest_score                                               -0.12848    0.15352     -0.8369       0.40445
+    learning_mode_final_High-start plateau learners             -0.34357    0.86171    -0.39871       0.69087
+    learning_mode_final_High-investment model optimizers         0.45759     1.2022     0.38063       0.70421
+    learning_mode_final_Minimal-time efficient completers        0.48944     1.3353     0.36654       0.71466
+    engineering_scaffold_Yes                                      3.0472    0.96153      3.1692     0.0019758
+    process_assessment_scaffold_Yes                                2.726    0.95988        2.84     0.0053678
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes     -2.0095     1.4939     -1.3451       0.18133
+
+
+Number of observations: 119, Error degrees of freedom: 111
+Root Mean Squared Error: 3.75
+R-squared: 0.148,  Adjusted R-Squared: 0.0943
+F-statistic vs. constant model: 2.76, p-value = 0.0112
+Model 4: decision-behaviour model
+
+Linear regression model (robust fit):
+    model_evaluation ~ 1 + pretest_score + reported_model + selected_highest_R2_model + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate       SE        tStat        pValue  
+                                                                _________    _______    ________    __________
+
+    (Intercept)                                                    12.952     1.8361      7.0542    1.5255e-10
+    pretest_score                                               -0.097304    0.14348    -0.67815       0.49908
+    reported_model_J                                              0.82948    0.71598      1.1585       0.24911
+    selected_highest_R2_model_Y                                   -2.0871    0.80475     -2.5934      0.010771
+    engineering_scaffold_Yes                                        2.619    0.90322      2.8996     0.0044972
+    process_assessment_scaffold_Yes                                 2.208    0.90905      2.4289      0.016734
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes      -1.4663     1.3291     -1.1032        0.2723
+
+
+Number of observations: 119, Error degrees of freedom: 112
+Root Mean Squared Error: 3.57
+R-squared: 0.203,  Adjusted R-Squared: 0.16
+F-statistic vs. constant model: 4.75, p-value = 0.000238
+
+
+====================================================
+Outcome: engineering_recommendation
+====================================================
+Model 1: total scaffold effect
+
+Linear regression model (robust fit):
+    engineering_recommendation ~ 1 + pretest_score + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate       SE        tStat        pValue  
+                                                                _________    _______    ________    __________
+
+    (Intercept)                                                    10.778     1.4146      7.6194    8.1653e-12
+    pretest_score                                               -0.064867    0.12434    -0.52168        0.6029
+    engineering_scaffold_Yes                                       3.7632    0.77636      4.8472    3.9878e-06
+    process_assessment_scaffold_Yes                                2.7303    0.77586      3.5191    0.00062322
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes      -2.0691     1.1516     -1.7967      0.075034
+
+
+Number of observations: 119, Error degrees of freedom: 114
+Root Mean Squared Error: 3.1
+R-squared: 0.239,  Adjusted R-Squared: 0.213
+F-statistic vs. constant model: 8.97, p-value = 2.47e-06
+Model 2: trace-adjusted model
+
+Linear regression model (robust fit):
+    engineering_recommendation ~ [Linear formula with 9 terms in 7 predictors]
+
+Estimated Coefficients:
+                                                                Estimate        SE         tStat        pValue  
+                                                                _________    _________    ________    __________
+
+    (Intercept)                                                    10.732       2.9136      3.6836    0.00035843
+    pretest_score                                                -0.05006      0.12851    -0.38955       0.69762
+    effective_modelling_time                                    0.0057835    0.0073709     0.78464       0.43435
+    first_practice_score                                        -0.012892     0.027441    -0.46981       0.63942
+    practice_gain_ratio                                           0.33213       1.7004     0.19533        0.8455
+    model_revision_rounds                                        0.069584     0.052172      1.3337       0.18505
+    engineering_scaffold_Yes                                        4.062       0.8082       5.026    1.9554e-06
+    process_assessment_scaffold_Yes                                3.0616      0.81632      3.7505    0.00028333
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes       -3.089       1.2736     -2.4254      0.016918
+
+
+Number of observations: 119, Error degrees of freedom: 110
+Root Mean Squared Error: 3.12
+R-squared: 0.26,  Adjusted R-Squared: 0.206
+F-statistic vs. constant model: 4.84, p-value = 4e-05
+Model 3: learning-mode model
+
+Linear regression model (robust fit):
+    engineering_recommendation ~ 1 + pretest_score + learning_mode_final + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate       SE        tStat        pValue  
+                                                                _________    _______    ________    __________
+
+    (Intercept)                                                    10.928      1.541      7.0916    1.3071e-10
+    pretest_score                                               -0.045646    0.12622    -0.36164       0.71831
+    learning_mode_final_High-start plateau learners              -0.89965    0.70846     -1.2699       0.20679
+    learning_mode_final_High-investment model optimizers          0.78308    0.98839     0.79227       0.42989
+    learning_mode_final_Minimal-time efficient completers        -0.14654     1.0978    -0.13348       0.89406
+    engineering_scaffold_Yes                                       4.0296    0.79053      5.0973     1.428e-06
+    process_assessment_scaffold_Yes                                2.8758    0.78917      3.6441    0.00040974
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes      -2.9143     1.2282     -2.3728      0.019375
+
+
+Number of observations: 119, Error degrees of freedom: 111
+Root Mean Squared Error: 3.09
+R-squared: 0.263,  Adjusted R-Squared: 0.216
+F-statistic vs. constant model: 5.65, p-value = 1.36e-05
+Model 4: decision-behaviour model
+
+Linear regression model (robust fit):
+    engineering_recommendation ~ 1 + pretest_score + reported_model + selected_highest_R2_model + engineering_scaffold*process_assessment_scaffold
+
+Estimated Coefficients:
+                                                                Estimate       SE        tStat        pValue  
+                                                                _________    _______    ________    __________
+
+    (Intercept)                                                    10.387     1.5601       6.658    1.0735e-09
+    pretest_score                                               -0.046842    0.12192    -0.38422       0.70155
+    reported_model_J                                               1.2805    0.60835      2.1049      0.037536
+    selected_highest_R2_model_Y                                  -0.64885    0.68378    -0.94892        0.3447
+    engineering_scaffold_Yes                                         3.51    0.76744      4.5736    1.2445e-05
+    process_assessment_scaffold_Yes                                2.6008     0.7724      3.3672     0.0010414
+    engineering_scaffold_Yes:process_assessment_scaffold_Yes      -1.9622     1.1293     -1.7376      0.085035
+
+
+Number of observations: 119, Error degrees of freedom: 112
+Root Mean Squared Error: 3.04
+R-squared: 0.28,  Adjusted R-Squared: 0.242
+F-statistic vs. constant model: 7.27, p-value = 1.41e-06
+              Outcome                      Model            Rsquared     AIC       BIC  
+    ____________________________    ____________________    ________    ______    ______
+
+    "report_score"                  "Total scaffold"         0.20529    939.89    953.79
+    "report_score"                  "Trace-adjusted"         0.21117    942.44    967.45
+    "report_score"                  "Learning-mode"          0.20411    942.75    964.98
+    "report_score"                  "Decision-behaviour"     0.24041    934.89    954.35
+    "engineering_test_score"        "Total scaffold"        0.044182    882.63    896.52
+    "engineering_test_score"        "Trace-adjusted"         0.22329    868.93    893.94
+    "engineering_test_score"        "Learning-mode"         0.057788     882.6    904.84
+    "engineering_test_score"        "Decision-behaviour"    0.094023    878.74    898.19
+    "model_evaluation"              "Total scaffold"         0.11632    640.37    654.27
+    "model_evaluation"              "Trace-adjusted"        0.083958    647.82    672.84
+    "model_evaluation"              "Learning-mode"         0.094331    644.99    667.22
+    "model_evaluation"              "Decision-behaviour"     0.16022    634.08    653.53
+    "engineering_recommendation"    "Total scaffold"         0.21267    600.56    614.46
+    "engineering_recommendation"    "Trace-adjusted"         0.20648     604.7    629.71
+    "engineering_recommendation"    "Learning-mode"          0.21605    602.91    625.15
+    "engineering_recommendation"    "Decision-behaviour"     0.24186    598.75     618.2
