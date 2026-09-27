@@ -21,22 +21,23 @@ The earlier scaffold-condition analyses are not part of this manuscript. V1 rema
       data_pretreatment_feature_construction.m
       participation_profile_clustering.m
       score_equivalence_analysis.m
-      figure_scripts/
-        Fig1_score_equivalence.m
-        Fig2_articulated_reasoning.m
-        Fig3_participation_profiles.m
-        Fig4_profile_outcomes.m
+
+    make_main_figures_nature.m
+
+    Figures_Main_Final/
+      Fig1_ScoreEquivalence.pdf
+      Fig2_ReasoningHeterogeneity.pdf
+      Fig3_ParticipationProfiles.pdf
+      Fig4_ProcessOutcome.pdf
 
     outputs/
       ScoreEquivalence_Analysis.xlsx
       Tasks10_13_Evidence.xlsx
       Inter_rater_Agreement_Analysis_Report.docx
+      participation_profile_assignment.csv
       participation_profile_statistics.csv
 
-    figures/
-      final_png_or_pdf_exports/
-
-Each figure script reads the repository's data and analysis outputs, then exports a 600-dpi PNG and vector PDF to `figures/final_png_or_pdf_exports/`. The Excel workbooks contain the frozen supplementary analyses used to check the reported values.
+The four final main-text figures are generated together by `make_main_figures_nature.m`. It uses manuscript terminology, normalises existing participation-profile labels without reclustering students, and exports PNG and vector PDF files to `Figures_Main_Final/`. The Excel workbooks contain the frozen supplementary analyses used to check the reported values.
 
 ## Data
 
@@ -54,14 +55,15 @@ From the repository root, run:
 
     run(fullfile("code", "participation_profile_clustering.m"))
     run(fullfile("code", "score_equivalence_analysis.m"))
-    run(fullfile("code", "figure_scripts", "Fig1_score_equivalence.m"))
-    run(fullfile("code", "figure_scripts", "Fig2_articulated_reasoning.m"))
-    run(fullfile("code", "figure_scripts", "Fig3_participation_profiles.m"))
-    run(fullfile("code", "figure_scripts", "Fig4_profile_outcomes.m"))
+    T = readtable(fullfile("data", "anonymised_student_level_dataset.csv"), "TextType", "string");
+    A = readtable(fullfile("outputs", "participation_profile_assignment.csv"), "TextType", "string");
+    assert(height(T) == height(A) && isequal(A.StudentRow, (1:height(T))'));
+    T.participation_pattern_final = A.ParticipationProfile;
+    run("make_main_figures_nature.m")
 
 `participation_profile_clustering.m` uses five platform-trace features, a fixed four-profile solution, robust scaling, and a fixed random seed. It writes row-aligned profile assignments and profile summaries under `outputs/`. `score_equivalence_analysis.m` uses the same anonymised rows, creates the familiar-score strata, and reproduces the core descriptive and rank-based comparisons. Its recomputed workbook is named `ScoreEquivalence_Reproduced.xlsx`; the supplied `ScoreEquivalence_Analysis.xlsx` and `Tasks10_13_Evidence.xlsx` are retained as the frozen analysis records.
 
-The scripts do not use student identifiers to join files. Profile assignments are linked to the analytical table by row number, and the analysis script checks that the row counts match before proceeding. The permutation test is Monte Carlo; its recomputed p value can vary slightly with the seed. The frozen analysis workbook is the source for manuscript-reported permutation results, while the reproduced workbook records the result from the script's documented fixed seed.
+The analyses do not use student identifiers to join files. Profile assignments are linked to the anonymised analytical table by row number, and the analysis script checks that the row counts match before proceeding. The main-figure script expects `T` to be loaded and to contain a participation-profile field; the commands above attach the released row-aligned labels. It only harmonises those labels and does not recluster. The permutation test is Monte Carlo; its recomputed p value can vary slightly with the seed. The frozen analysis workbook is the source for manuscript-reported permutation results, while the reproduced workbook records the result from the script's documented fixed seed.
 
 ## Main interpretation
 
