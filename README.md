@@ -25,10 +25,10 @@ The earlier scaffold-condition analyses are not part of this manuscript. V1 rema
     make_main_figures_nature.m
 
     Figures_Main_Final/
-      Fig1_ScoreEquivalence.pdf
-      Fig2_ReasoningHeterogeneity.pdf
-      Fig3_ParticipationProfiles.pdf
-      Fig4_ProcessOutcome.pdf
+      Fig1_ScoreEquivalence.pdf / .png
+      Fig2_ReasoningHeterogeneity.pdf / .png
+      Fig3_ParticipationProfiles.pdf / .png
+      Fig4_ProcessOutcome.pdf / .png
 
     outputs/
       ScoreEquivalence_Analysis.xlsx
