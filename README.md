@@ -1,198 +1,87 @@
-# Beyond Platform Scores: Scaffolding Engineering Judgement and Learning Analytics in a Data-Driven MTO Virtual Laboratory
+# Beyond Platform Scores: What Score Equivalence Conceals in a Data-Driven Virtual Laboratory
 
-This repository contains the anonymised data, MATLAB code, statistical outputs, and figure materials associated with the manuscript:
+This repository contains the anonymised analytical dataset, MATLAB source code, and supporting outputs for the revised manuscript. The study examines what a high score on a familiar embedded task does—and does not—show about students' engineering reasoning and participation in an MTO soft-sensor virtual laboratory.
 
-**Beyond Platform Scores: Scaffolding Engineering Judgement and Learning Analytics in a Data-Driven MTO Virtual Laboratory**
+The V2 analysis treats four sources as complementary evidence:
 
-The study examines how learning gain, engineering judgement, and learning behaviours can be evaluated in a no-code virtual laboratory for developing a soft sensor for catalyst coke content in the methanol-to-olefins (MTO) process.
+1. scores from the familiar-task embedded assessment;
+2. scores from the modified-scenario task;
+3. written-report rubric scores as evidence of articulated modelling reasoning; and
+4. platform-recorded participation traces summarised as participation profiles.
 
-## Repository structure
+The earlier scaffold-condition analyses are not part of this manuscript. V1 remains available in the Git history and on the `v1-legacy-scaffold` branch.
 
-```text
-data/
-  anonymised_student_level_dataset.csv
-  report_rater_scores_anonymised.csv
+## Repository contents
 
-code/
-  feature_construction.m
-  scaffolding_test.m
-  learning_mode_clustering.m
-  figure_scripts/
+    data/
+      anonymised_student_level_dataset.csv
+      report_rater_scores_anonymised.xlsx
 
-outputs/
-  Correlation_Association_Table.xlsx
-  LearningMode_ExternalValidation_Mean_4.xlsx
-  LearningMode_ExternalValidation_Std_4.xlsx
-  Scaffold_Model_Comparison_Summary.xlsx
-  full_regression_coefficients.txt
-  rater_reliability_outputs.docx
+    code/
+      data_pretreatment_feature_construction.m
+      participation_profile_clustering.m
+      score_equivalence_analysis.m
+      figure_scripts/
+        Fig1_score_equivalence.m
+        Fig2_articulated_reasoning.m
+        Fig3_participation_profiles.m
+        Fig4_profile_outcomes.m
 
-figures/
-  editable_figure_sources/
-  final_png_or_pdf_exports/
-```
+    outputs/
+      ScoreEquivalence_Analysis.xlsx
+      Tasks10_13_Evidence.xlsx
+      Inter_rater_Agreement_Analysis_Report.docx
+      participation_profile_statistics.csv
 
-## Data files
+    figures/
+      final_png_or_pdf_exports/
 
-### `data/anonymised_student_level_dataset.csv`
+Each figure script reads the repository's data and analysis outputs, then exports a 600-dpi PNG and vector PDF to `figures/final_png_or_pdf_exports/`. The Excel workbooks contain the frozen supplementary analyses used to check the reported values.
 
-This file contains the anonymised student-level analytical dataset used in the manuscript. It includes assessment outcomes, report-rubric scores, learning-trace variables, model-decision variables, and instructional-condition labels.
+## Data
 
-Main variable groups include:
+`data/anonymised_student_level_dataset.csv` contains 119 anonymised student-level records. It includes familiar-task embedded scores, modified-scenario scores, five report-rubric dimensions, and platform participation variables. Some source column names retain earlier internal terminology for reproducibility; in the revised manuscript, `standard_exam_score` is the familiar-task embedded score, `engineering_test_score` is the modified-scenario score, and the legacy `learning_mode` concept is described as a participation profile.
 
-- baseline score: pretest score
-- assessment outcomes: standard MTO exam score, engineering test score, report score
-- rubric dimensions: process understanding, variable selection, modelling workflow, model evaluation, engineering recommendation
-- learning traces: practice scores, practice gain, modelling time, model-revision rounds, improving transition ratio
-- model-decision variables: reported model, reported R², selected highest-R² model
-- instructional design condition: N, A, R, and RA
+`data/report_rater_scores_anonymised.xlsx` contains anonymised ratings from three independent report raters. The associated reliability report is in `outputs/Inter_rater_Agreement_Analysis_Report.docx`.
 
-The scaffold labels are:
+The analytical dataset is retained without deleting legacy columns. The code uses only the fields documented in its comments. Student names and direct identifiers are not included in the released analytical dataset.
 
-```text
-N  = no scaffold
-A  = process-oriented assessment scaffold
-R  = engineering-reasoning scaffold
-RA = combined scaffolds
-```
+## Reproduction
 
-### `data/report_rater_scores_anonymised.csv`
+MATLAB R2022b or later is recommended. The clustering and rank-based analyses require Statistics and Machine Learning Toolbox.
 
-This file contains anonymised report scores assigned by three independent raters. It is used to reproduce the inter-rater reliability analysis, including ICC, Cronbach's alpha, pairwise Pearson correlations, and Kendall's W.
+From the repository root, run:
 
-## Code files
+    run(fullfile("code", "participation_profile_clustering.m"))
+    run(fullfile("code", "score_equivalence_analysis.m"))
+    run(fullfile("code", "figure_scripts", "Fig1_score_equivalence.m"))
+    run(fullfile("code", "figure_scripts", "Fig2_articulated_reasoning.m"))
+    run(fullfile("code", "figure_scripts", "Fig3_participation_profiles.m"))
+    run(fullfile("code", "figure_scripts", "Fig4_profile_outcomes.m"))
 
-### `code/feature_construction.m`
+`participation_profile_clustering.m` uses five platform-trace features, a fixed four-profile solution, robust scaling, and a fixed random seed. It writes row-aligned profile assignments and profile summaries under `outputs/`. `score_equivalence_analysis.m` uses the same anonymised rows, creates the familiar-score strata, and reproduces the core descriptive and rank-based comparisons. Its recomputed workbook is named `ScoreEquivalence_Reproduced.xlsx`; the supplied `ScoreEquivalence_Analysis.xlsx` and `Tasks10_13_Evidence.xlsx` are retained as the frozen analysis records.
 
-Constructs student-level learning-trace and model-decision variables from the cleaned data. This script should be run before the statistical analysis scripts if feature reconstruction is required.
+The scripts do not use student identifiers to join files. Profile assignments are linked to the analytical table by row number, and the analysis script checks that the row counts match before proceeding. The permutation test is Monte Carlo; its recomputed p value can vary slightly with the seed. The frozen analysis workbook is the source for manuscript-reported permutation results, while the reproduced workbook records the result from the script's documented fixed seed.
 
-### `code/scaffolding_test.m`
+## Main interpretation
 
-Reproduces the scaffold-related analyses, including:
+The familiar-task score has a ceiling: 62 of 119 students (52.1%) received 100. Within this perfect-score group, modified-scenario scores still varied substantially (median 86; IQR 13; range 61–100). The association between familiar-task and modified-scenario scores was small and not statistically significant in the supplied analysis (Kendall's τb = 0.0703, p = 0.311).
 
-- class-wise comparisons
-- robust regression models
-- scaffold models
-- trace-adjusted models
-- decision-behaviour models
-- model-comparison summaries
+Participation profiles provide a complementary description of trace patterns. They are not causal categories or measures of ability. Profile comparisons and rubric results should be interpreted as evidence about different dimensions of performance, not as proof that any one score fully represents engineering judgement.
 
-### `code/learning_mode_clustering.m`
+## Ethics and data use
 
-Reproduces the learning-mode analysis using k-means clustering based on five learning-trace variables:
-
-- improving transition ratio
-- mean practice time
-- model-revision rounds
-- first practice score
-- practice gain ratio
-
-The script generates the four learning modes reported in the manuscript:
-
-- deliberate improvers
-- high-start plateau learners
-- invested optimizers
-- minimal-time completers
-
-### `code/figure_scripts/`
-
-Contains scripts used to generate manuscript figures. Editable source files and exported figure files are stored separately in the `figures/` folder.
-
-## Outputs
-
-The `outputs/` folder contains key statistical results used in the manuscript and Supplementary Information.
-
-### `Correlation_Association_Table.xlsx`
-
-Long-format correlation and association results, including Spearman correlations, p-values, and adjusted p-values.
-
-### `LearningMode_ExternalValidation_Mean_4.xlsx`
-
-Mean values of clustering variables and external validation indicators for the four learning modes.
-
-### `LearningMode_ExternalValidation_Std_4.xlsx`
-
-Standard deviations of clustering variables and external validation indicators for the four learning modes.
-
-### `Scaffold_Model_Comparison_Summary.xlsx`
-
-Model-comparison results for scaffold-related regression models, including adjusted R², AIC, and BIC.
-
-### `full_regression_coefficients.txt`
-
-Full coefficient-level outputs for robust regression models.
-
-### `rater_reliability_outputs.docx`
-
-English report of inter-rater agreement analysis, including ICC(2,1), ICC(2,3), Cronbach's alpha, pairwise Pearson correlations, Kendall's W, and descriptive statistics for the three raters.
-
-## Figures
-
-The `figures/` folder contains figure materials.
-
-```text
-figures/editable_figure_sources/
-```
-
-contains editable figure source files.
-
-```text
-figures/final_png_or_pdf_exports/
-```
-
-contains final exported figures used in the manuscript.
-
-## Recommended reproduction workflow
-
-Run the scripts in the following order:
-
-```text
-1. code/feature_construction.m
-2. code/scaffolding_test.m
-3. code/learning_mode_clustering.m
-4. code/figure_scripts/
-```
-
-Some output files are already provided in the `outputs/` folder for verification and direct comparison with the manuscript.
-
-## Software requirements
-
-The analyses were conducted in MATLAB. The scripts use standard MATLAB functions for data processing, regression modelling, clustering, and visualisation.
-
-Recommended environment:
-
-```text
-MATLAB R2022b or later
-Statistics and Machine Learning Toolbox
-```
-
-## Data privacy and ethical use
-
-All student-level data in this repository have been anonymised. Student names, student IDs, raw reports, and raw platform logs are not released. The released dataset is intended only for reproducing the analyses reported in the manuscript.
-
-The study was approved by the College of Chemistry and Chemical Engineering under approval number **CCV2601**. All data were anonymised before analysis and used only for educational research.
-
-## Notes on interpretation
-
-The instructional conditions were implemented across intact classes in a sequential design rather than through individual random assignment. Therefore, scaffold-related results should be interpreted as design-based associations rather than fully randomised causal effects.
-
-The standard platform score, engineering-oriented decision test, report rubric, and learning traces represent different layers of evidence. The repository is organised to support reproduction of the manuscript's central argument: data-driven virtual laboratories should be evaluated not only by task completion or model-performance metrics, but also by evidence of engineering judgement and learning-process quality.
+The study is associated with institutional approval reference **CCV2601**. The released student-level data are anonymised. Users must follow the institution's approval scope and applicable requirements when reusing or redistributing the data. The approval reference alone should not be interpreted as a statement about individual consent or a waiver.
 
 ## Citation
 
-Please cite the associated manuscript if using this dataset, code, or outputs:
+Please cite the associated manuscript when using these materials:
 
-```text
-Zhang, X., & Zhang, H. Beyond Platform Scores: Scaffolding Engineering Judgement and Learning Analytics in a Data-Driven MTO Virtual Laboratory. Education for Chemical Engineers.
-```
+    Zhang, X., & Zhang, H. Beyond Platform Scores: What Score Equivalence Conceals in a Data-Driven Virtual Laboratory.
 
 ## Contact
 
-For questions about the dataset, code, or manuscript, please contact:
-
-```text
 Hao Zhang
 School of Chemistry and Chemical Engineering
 Southwest University
-Email: haozhang@swu.edu.cn
-```
+
